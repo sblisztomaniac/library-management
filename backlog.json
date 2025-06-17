@@ -1,0 +1,114 @@
+[
+  {
+    "epic": "Book Management",
+    "stories": [
+      {
+        "title": "Admin can add books",
+        "tasks": [
+          "Define addBook(bookData) function with required fields",
+          "Validate book input fields (title, author, total copies ≥ 1)",
+          "Push new book to in-memory array or mock API"
+        ]
+      },
+      {
+        "title": "Admin can edit existing books",
+        "tasks": [
+          "Define editBook(bookId, updatedFields)",
+          "Update book object and recalculate available copies if total is edited"
+        ]
+      },
+      {
+        "title": "Admin can delete books",
+        "tasks": [
+          "Define deleteBook(bookId)",
+          "Ensure books on loan cannot be deleted (optional validation)"
+        ]
+      }
+    ]
+  },
+  {
+    "epic": "Loan Management",
+    "stories": [
+      {
+        "title": "Member can borrow books",
+        "tasks": [
+          "Define borrowBook(userId, bookId)",
+          "Check if copies_available > 0",
+          "Create loan record with borrow_date, due_date (14 days), return_date = null",
+          "Decrement copies_available in book data"
+        ]
+      },
+      {
+        "title": "Member can return books",
+        "tasks": [
+          "Define returnBook(loanId)",
+          "Mark return_date = today in loan record",
+          "Increment copies_available in book data"
+        ]
+      },
+      {
+        "title": "Admin can view all loans",
+        "tasks": [
+          "Create getAllLoans() function",
+          "Support optional filters (e.g., isReturned, due_date)"
+        ]
+      }
+    ]
+  },
+  {
+    "epic": "Book Browsing & Searching",
+    "stories": [
+      {
+        "title": "Member can search for books",
+        "tasks": [
+          "Implement searchBooks(query) across title, author, category",
+          "Return list of matched books with availability"
+        ]
+      },
+      {
+        "title": "Member can view book availability",
+        "tasks": [
+          "Ensure copies_available is returned in all book views"
+        ]
+      }
+    ]
+  },
+  {
+    "epic": "Member Loan History",
+    "stories": [
+      {
+        "title": "Member can view current borrowed books",
+        "tasks": [
+          "Define getCurrentLoans(userId)",
+          "Return loans where return_date IS NULL"
+        ]
+      },
+      {
+        "title": "Member can view loan history",
+        "tasks": [
+          "Define getLoanHistory(userId)",
+          "Return all past loans with return_date"
+        ]
+      }
+    ]
+  },
+  {
+    "epic": "Data Store & Structure",
+    "stories": [
+      {
+        "title": "In-memory mock database",
+        "tasks": [
+          "Define mock users, books, and loans arrays",
+          "Structure each entity to match datamodel.md"
+        ]
+      },
+      {
+        "title": "Enable state persistence (optional)",
+        "tasks": [
+          "Store data in localStorage or JSON file",
+          "Load on app start, save on mutation (optional dev tool)"
+        ]
+      }
+    ]
+  }
+]
